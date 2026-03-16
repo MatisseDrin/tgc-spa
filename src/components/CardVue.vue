@@ -50,7 +50,7 @@ withDefaults(
     size?: 'sm' | 'md'
     selected?: boolean
     disabled?: boolean
-    currentHp: number
+    currentHp?: number
   }>(),
   {
     size: 'md',
