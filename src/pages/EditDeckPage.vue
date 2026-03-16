@@ -14,12 +14,18 @@
             <NFormItem label="Nom du deck">
               <NInput v-model:value="name" placeholder="Mon deck..." />
             </NFormItem>
+            <NFormItem label="Rechercher une carte">
+              <NInput
+                v-model:value="searchTerm"
+                placeholder="Nom du Pokémon..."
+              />
+            </NFormItem>
             <NFormItem
               :label="`Cartes sélectionnées (${selectedCards.length}/10)`"
             >
               <CardGrid
                 v-model="selectedCards"
-                :cards="cards"
+                :cards="filteredCards"
                 :max-selectable="10"
               />
             </NFormItem>
@@ -53,7 +59,7 @@ import {
   NText,
   useMessage,
 } from 'naive-ui'
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 import CardGrid from '@/components/CardGrid.vue'
@@ -68,10 +74,19 @@ const message = useMessage()
 const deckId = route.params.id as string
 
 const name = ref('')
+const searchTerm = ref('')
 const selectedCards = ref<number[]>([])
 const cards = ref<Card[]>([])
 const loading = ref(false)
 const submitting = ref(false)
+
+const filteredCards = computed(() =>
+  cards.value.filter(
+    (c) =>
+      selectedCards.value.includes(c.id) ||
+      c.name.toLowerCase().includes(searchTerm.value.toLowerCase()),
+  ),
+)
 
 onMounted(async () => {
   loading.value = true
