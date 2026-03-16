@@ -53,7 +53,7 @@ import {
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
-import Card from '@/components/CardVue.vue'
+import Card from '@/components/PokemonCard.vue'
 import { useApi } from '@/composables/useApi'
 import { ROUTES } from '@/router'
 import type { Card as CardType, Deck } from '@/types'

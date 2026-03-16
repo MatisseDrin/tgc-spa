@@ -17,7 +17,7 @@
 <script setup lang="ts">
 import type { Card as CardType } from '@/types'
 
-import Card from './CardVue.vue'
+import Card from './PokemonCard.vue'
 
 const props = withDefaults(
   defineProps<{

@@ -35,7 +35,7 @@ import { NButton, NCard, NSpace, NSpin, NText, useMessage } from 'naive-ui'
 import { computed, onMounted, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
-import Card from '@/components/Card.vue'
+import Card from '@/components/PokemonCard.vue'
 import { useApi } from '@/composables/useApi'
 import { ROUTES } from '@/router'
 import type { Card as CardType, Deck } from '@/types'
