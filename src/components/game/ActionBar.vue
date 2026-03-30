@@ -1,6 +1,6 @@
 <template>
   <div class="action-bar">
-    <NSpace align="center" justify="space-between">
+    <NSpace align="center" justify="space-between" wrap>
       <NSpace align="center" :size="12">
         <NTag :type="gameStore.isMyTurn ? 'success' : 'warning'" size="medium">
           {{ gameStore.isMyTurn ? 'Votre tour' : 'Tour adversaire' }}
@@ -68,5 +68,11 @@ const canAttack = computed(
   background: white;
   border-top: 1px solid #e0e0e0;
   border-bottom: 1px solid #e0e0e0;
+}
+
+@media (max-width: 600px) {
+  .action-bar {
+    padding: 12px 12px;
+  }
 }
 </style>
