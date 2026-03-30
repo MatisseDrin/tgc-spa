@@ -23,8 +23,8 @@
         {{ card.type }}
       </span>
       <div class="pokemon-card__stats">
-        <span>HP {{ card.hp }}</span>
-        <span>ATK {{ card.attack }}</span>
+        <span>❤️ {{ card.hp }}</span>
+        <span>⚔️ {{ card.attack }}</span>
       </div>
       <NProgress
         v-if="currentHp !== undefined"
