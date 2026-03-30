@@ -47,6 +47,12 @@ defineProps<{
   background: rgba(0, 0, 0, 0.02);
 }
 
+@media (max-width: 600px) {
+  .player-zone {
+    padding: 8px 12px;
+  }
+}
+
 .player-zone--opponent {
   background: rgba(208, 48, 80, 0.04);
 }

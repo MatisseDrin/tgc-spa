@@ -1,6 +1,6 @@
 <template>
   <NCard title="Jouer">
-    <NGrid :cols="2" :x-gap="24">
+    <NGrid responsive="screen" cols="1 m:2" :x-gap="24" :y-gap="24">
       <!-- Créer une partie -->
       <NGridItem>
         <NCard title="Créer une partie" size="small">

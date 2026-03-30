@@ -14,15 +14,20 @@
       />
       <NSpace v-else vertical :size="24">
         <NCard v-for="deck in decks" :key="deck.id" :title="deck.name">
-          <div class="deck-grid">
-            <Card
-              v-for="card in getDeckCards(deck)"
-              :key="card.id"
-              :card="card"
-              size="sm"
-            />
-          </div>
+          <NGrid
+            responsive="screen"
+            cols="2 s:3 m:4 l:5 xl:6"
+            :x-gap="12"
+            :y-gap="12"
+          >
+            <NGridItem v-for="card in getDeckCards(deck)" :key="card.id">
+              <Card :card="card" size="sm" />
+            </NGridItem>
+          </NGrid>
           <NSpace justify="end" style="margin-top: 16px">
+            <NButton size="small" @click="router.push(`/decks/${deck.id}`)"
+              >Détails</NButton
+            >
             <NButton size="small" @click="router.push(`/decks/${deck.id}/edit`)"
               >Modifier</NButton
             >
@@ -44,6 +49,8 @@ import {
   NButton,
   NCard,
   NEmpty,
+  NGrid,
+  NGridItem,
   NPopconfirm,
   NSpace,
   NSpin,
@@ -97,11 +104,3 @@ const handleDelete = async (id: number) => {
 
 onMounted(fetchDecks)
 </script>
-
-<style scoped>
-.deck-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 12px;
-}
-</style>

@@ -1,20 +1,22 @@
 <template>
-  <div class="card-grid">
-    <Card
-      v-for="card in cards"
-      :key="card.id"
-      :card="card"
-      size="sm"
-      :selected="modelValue.includes(card.id)"
-      :disabled="
-        !modelValue.includes(card.id) && modelValue.length >= maxSelectable
-      "
-      @click="toggleCard(card.id)"
-    />
-  </div>
+  <NGrid responsive="screen" cols="2 s:3 m:4 l:5 xl:6" :x-gap="12" :y-gap="12">
+    <NGridItem v-for="card in cards" :key="card.id">
+      <Card
+        :card="card"
+        size="sm"
+        :selected="modelValue.includes(card.id)"
+        :disabled="
+          !modelValue.includes(card.id) && modelValue.length >= maxSelectable
+        "
+        @click="toggleCard(card.id)"
+      />
+    </NGridItem>
+  </NGrid>
 </template>
 
 <script setup lang="ts">
+import { NGrid, NGridItem } from 'naive-ui'
+
 import type { Card as CardType } from '@/types'
 
 import Card from './PokemonCard.vue'
@@ -44,11 +46,3 @@ const toggleCard = (id: number) => {
   }
 }
 </script>
-
-<style scoped>
-.card-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-</style>

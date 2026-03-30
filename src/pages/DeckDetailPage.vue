@@ -1,5 +1,5 @@
 <template>
-  <div style="padding: 24px; max-width: 1200px; margin: 0 auto">
+  <div class="page-container">
     <NSpin :show="loading">
       <NSpace v-if="deck" vertical :size="24">
         <NSpace justify="space-between" align="center">
@@ -16,14 +16,16 @@
         </NSpace>
 
         <NCard>
-          <div class="card-grid">
-            <Card
-              v-for="card in deckCards"
-              :key="card.id"
-              :card="card"
-              size="sm"
-            />
-          </div>
+          <NGrid
+            responsive="screen"
+            cols="2 s:3 m:4 l:5 xl:6"
+            :x-gap="12"
+            :y-gap="12"
+          >
+            <NGridItem v-for="card in deckCards" :key="card.id">
+              <Card :card="card" size="sm" />
+            </NGridItem>
+          </NGrid>
         </NCard>
       </NSpace>
     </NSpin>
@@ -31,7 +33,16 @@
 </template>
 
 <script setup lang="ts">
-import { NButton, NCard, NSpace, NSpin, NText, useMessage } from 'naive-ui'
+import {
+  NButton,
+  NCard,
+  NGrid,
+  NGridItem,
+  NSpace,
+  NSpin,
+  NText,
+  useMessage,
+} from 'naive-ui'
 import { computed, onMounted, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
@@ -73,9 +84,15 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-.card-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+.page-container {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+  .page-container {
+    padding: 12px;
+  }
 }
 </style>

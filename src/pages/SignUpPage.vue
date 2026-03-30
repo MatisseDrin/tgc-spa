@@ -1,5 +1,14 @@
 <template>
-  <NSpace vertical :size="24" style="max-width: 400px; margin: 60px auto">
+  <NSpace
+    vertical
+    :size="24"
+    style="
+      max-width: 400px;
+      margin: 60px auto;
+      padding: 0 16px;
+      box-sizing: border-box;
+    "
+  >
     <NCard title="Inscription">
       <NForm ref="formRef" :model="formValue" :rules="rules">
         <NFormItem label="Nom d'utilisateur" path="username">
